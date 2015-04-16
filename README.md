@@ -5,15 +5,9 @@ Storing the file will make it so that the contacts that are added will be persis
 
 **Functions:**
 
--Add Contact
-
--Remove Contact
-
--Edit Contact
-
--Find Contact
-
--Print Contacts
-
--More Functions to be determined
-
+- Add Contact
+- Remove Contact
+- Edit Contact
+- Find Contact
+- Print Contacts
+- More Functions to be determined
