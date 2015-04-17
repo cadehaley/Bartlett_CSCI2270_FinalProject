@@ -12,4 +12,5 @@ Storing the file will make it so that the contacts that are added will be persis
 - Print Contacts
 - Group create
 - Group Contacts
+- Possible JSON functions to be added
 - More Functions to be determined
