@@ -10,4 +10,6 @@ Storing the file will make it so that the contacts that are added will be persis
 - Edit Contact
 - Find Contact
 - Print Contacts
+- Group create
+- Group Contacts
 - More Functions to be determined
