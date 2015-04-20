@@ -27,9 +27,9 @@ public:
 	void deleteContact();
 	void printContacts();
 	void findContact();
+	void editContact();
+  void groupCreate();
+  void addContactToGroup();
 private:
-
-	
 };
-
 #endif // ADDRESSBOOK_H

@@ -4,7 +4,7 @@
 
 int main(int argc, char const *argv[])
 {
-	
+
 	bool wl = true;
 
 	while(wl == true){
