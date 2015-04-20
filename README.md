@@ -5,12 +5,12 @@ Storing the file will make it so that the contacts that are added will be persis
 
 **Functions:**
 
-- Add Contact
-- Remove Contact
-- Edit Contact
-- Find Contact (By name, phone number, or group)
-- Print Contacts
-- Group create
-- Group Contacts
-- Possible JSON functions to be added
+- Add Contact -Lucas
+- Remove Contact -Lucas
+- Edit Contact -Sarah
+- Find Contact (By name, phone number, or group) -Griffin
+- Print Contacts -Sarah
+- Group create -Jack
+- Group Contacts -Jack
+- Possible JSON functions to be added -On Hold
 - More Functions to be determined
