@@ -8,7 +8,7 @@ Storing the file will make it so that the contacts that are added will be persis
 - Add Contact
 - Remove Contact
 - Edit Contact
-- Find Contact
+- Find Contact (By name, phone number, or group)
 - Print Contacts
 - Group create
 - Group Contacts
