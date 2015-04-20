@@ -2,6 +2,7 @@
 
 Our Project is to make an address book That will store the contacts into a text file.
 Storing the file will make it so that the contacts that are added will be persistant.
+The contacts will be stored in a doubly linked list.
 
 **Functions:**
 
