@@ -1,11 +1,12 @@
 #include "AddressBook.h"
 #include "iostream"
 #include "string"
+#include "vector"
 
 AddressBook::AddressBook(){
     head = NULL;
     tail = NULL;
-    GroupNames.push_back("Group Names:");
+    //GroupNames.push_back("Group Names:");
 }
 
 AddressBook::~AddressBook(){
@@ -13,32 +14,32 @@ AddressBook::~AddressBook(){
 }
 
 void AddressBook::addContact(std::string name, int phone, std::string group){
-    ContactNode *node = ContactNode(name, phone, group);
+    ContactNode *node = new ContactNode(name, phone, group);
 
     if(head == NULL)
     {
-        node->previous = NULL;
-        head = node;
-        tail = node;
+	  node->previous = NULL;
+	  head = node;
+	  tail = node;
     }
 
     else
     {
-        node->previous = tail;
-        tail->next = node;
-        tail = node;
+	  node->previous = tail;
+	  tail->next = node;
+	  tail = node;
     }
 }
 
 void AddressBook::deleteContact(std::string name){
     if(head == NULL)
     {
-        printf("There are no contacts to delete.\n");
+	  printf("There are no contacts to delete.\n");
     }
 
     else
     {
-        ContactNode *node = AddressBook::findContact(name);
+	  ContactNode *node = new AddressBook::findContact(name);
     }
 }
 
@@ -51,7 +52,7 @@ ContactNode* AddressBook::findContact(std::string name){
 	return node;
 }
 
-void AddressBook::editContact(std::string name){	
+void AddressBook::editContact(std::string name){
 
 }
 
@@ -70,10 +71,16 @@ void AddressBook::addContactToGroup(std::string name, std::string group){
 	}
 }
 
-void printGroups(){
-	std::cout<<GroupNames[0]<<std::endl;
-	for (unsigned int i = 1; i < GroupNames.size(); ++i){
-		std::cout<<GroupNames[i]<<", ";
+void AddressBook::printGroups(){
+	if(GroupNames.empty()){
+		printf("No Groups have been made yet.\n");
 	}
-	std::cout<<std::endl;
+	else{
+		//std::cout<<GroupNames[0]<<std::endl;
+		printf("Group Names:\n");
+		for (unsigned int i = 0; i < GroupNames.size(); ++i){
+			std::cout<<GroupNames[i]<<", ";
+		}
+		std::cout<<std::endl;
+	}
 }
