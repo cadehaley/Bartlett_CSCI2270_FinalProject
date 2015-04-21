@@ -12,7 +12,7 @@ AddressBook::~AddressBook(){
 }
 
 void AddressBook::addContact(std::string name, int phone, std::string group){
-    ContactNode *node = ContactNode(name, phone, group);
+    ContactNode *node = new ContactNode(name, phone, group);
 
     if(head == NULL)
     {
