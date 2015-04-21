@@ -15,21 +15,25 @@ struct ContactNode{
 		name = in_name;
 		phoneNumber = in_phoneNumber;
 		Group = in_Group;
+		next = NULL;
 	}
 };
 
 class AddressBook
 {
 public:
-	AddressBook();
-	~AddressBook();
-	void addContact();
-	void deleteContact();
-	void printContacts();
-	void findContact();
-	void editContact();
-  void groupCreate();
-  void addContactToGroup();
+    AddressBook();
+    ~AddressBook();
+    void addContact(string, int, string);
+    void deleteContact();
+    void printContacts();
+    void findContact();
+    void editContact();
+    void groupCreate();
+    void addContactToGroup();
+
 private:
+    ContactNode *head;
+    ContactNode *tail;
 };
 #endif // ADDRESSBOOK_H

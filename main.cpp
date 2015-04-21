@@ -4,7 +4,6 @@
 
 int main(int argc, char const *argv[])
 {
-
 	bool wl = true;
 
 	while(wl == true){
@@ -20,6 +19,7 @@ int main(int argc, char const *argv[])
 
 		switch(userInput){
 			case 1:
+
 				break;
 			case 2:
 				break;
