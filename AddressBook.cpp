@@ -13,7 +13,8 @@ AddressBook::~AddressBook(){
 }
 
 void AddressBook::addContact(std::string name, int phone, std::string group){
-    ContactNode *node = new ContactNode(name, phone, group);
+    ContactNode *node = new ContactNode(name, phone);
+    AddressBook::addContactToGroup(name, group);
 
     if(head == NULL)
     {
@@ -28,6 +29,7 @@ void AddressBook::addContact(std::string name, int phone, std::string group){
 	  tail->next = node;
 	  tail = node;
     }
+
 }
 
 void AddressBook::deleteContact(std::string name){
@@ -86,7 +88,7 @@ void AddressBook::addContactToGroup(std::string name, std::string group){
 		node->Group = group;
 	}
 	else{
-		std::cout<<group<<" is not a group. Create it first or Choose from the list of groups."<<std::endl;
+		std::cout<<group<<" is not a group. Create it first or choose from the list of groups."<<std::endl;
 	}
 }
 

@@ -12,10 +12,9 @@ struct ContactNode{
 
 	ContactNode(){};
 
-	ContactNode(std::string in_name, int in_phoneNumber, std::string in_Group){
+	ContactNode(std::string in_name, int in_phoneNumber){
 		name = in_name;
 		phoneNumber = in_phoneNumber;
-		Group = in_Group;
 		next = NULL;
 	}
 };
