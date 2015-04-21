@@ -6,13 +6,13 @@
 struct ContactNode{
 	std::string name;
 	int phoneNumber;
-	int Group;
+	std::string Group;
 	ContactNode *next;
 	ContactNode *previous;
 
 	ContactNode(){};
 
-	ContactNode(std::string in_name, int in_phoneNumber, int in_Group){
+	ContactNode(std::string in_name, int in_phoneNumber, string in_Group){
 		name = in_name;
 		phoneNumber = in_phoneNumber;
 		Group = in_Group;
@@ -25,13 +25,13 @@ class AddressBook
 public:
 	AddressBook();
 	~AddressBook();
-	void addContact(std::string name, int phone, int group);
-	void deleteContact(std::string name, int phone, int group);
+	void addContact(std::string name, int phone, std::string group);
+	void deleteContact(std::string name, int phone, std::string group);
 	void printContacts();
 	ContactNode* findContact();
 	void editContact();
   	void groupCreate();
-  	void addContactToGroup(std::string name, int group);
+  	void addContactToGroup(std::string name, std::string group);
 private:
 	ContactNode *head;
 	ContactNode *tail;

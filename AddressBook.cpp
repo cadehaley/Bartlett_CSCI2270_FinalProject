@@ -11,11 +11,11 @@ AddressBook::~AddressBook(){
 
 }
 
-void AddressBook::addContact(std::string name, int phone, int group, bool is_first){
-	
+void AddressBook::addContact(std::string name, int phone, std::string group){
+
 }
 
-void AddressBook::deleteContact(std::string name, int phone, int group){}
+void AddressBook::deleteContact(std::string name, int phone, std::string group){}
 
 void AddressBook::printContacts(){}
 
@@ -27,7 +27,7 @@ void AddressBook::groupCreate(){
 
 }
 
-void AddressBook::addContactToGroup(std::string name, int group){
+void AddressBook::addContactToGroup(std::string name, std::string group){
 	ContactNode *node = AddressBook::findContact(name);
 	node->Group = group;
 }
