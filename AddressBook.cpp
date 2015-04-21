@@ -6,7 +6,6 @@
 AddressBook::AddressBook(){
     head = NULL;
     tail = NULL;
-    //GroupNames.push_back("Group Names:");
 }
 
 AddressBook::~AddressBook(){
