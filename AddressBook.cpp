@@ -87,7 +87,7 @@ void AddressBook::addContactToGroup(std::string name, std::string group){
 	}
 	else{
 		std::cout<<group<<" is not a group. Create it first or Choose from the list of groups."<<std::endl;
-		printf("Contact was not added to group.\n");
+		printf("Contact was not added to a group.\n");
 	}
 }
 
