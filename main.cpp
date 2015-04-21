@@ -46,9 +46,14 @@ int main(int argc, char const *argv[])
 				break;
 			case 3:
 				break;
-			case 4:
-				break;
+            case 4:
+                FunctionCall->printContacts();
+                break;
 			case 5:
+			    printf("Name of Contact You Wish To Change:\n");
+				std::cin.ignore(100, '\n');
+				std::getline(std::cin, userName);
+			    FunctionCall->editContact(userName);
 				break;
 			case 6:
 				printf("Enter Name of new Group:\n");
