@@ -23,6 +23,7 @@ struct ContactNode{
 class AddressBook
 {
 public:
+<<<<<<< HEAD
 	AddressBook();
 	~AddressBook();
 	void addContact(std::string name, int phone, std::string group);
@@ -35,5 +36,20 @@ public:
 private:
 	ContactNode *head;
 	ContactNode *tail;
+=======
+    AddressBook();
+    ~AddressBook();
+    void addContact(string, int, string);
+    void deleteContact();
+    void printContacts();
+    void findContact();
+    void editContact();
+    void groupCreate();
+    void addContactToGroup();
+
+private:
+    ContactNode *head;
+    ContactNode *tail;
+>>>>>>> cf45ff4ebfcd5c5ad167990c372e1cc1a70ca379
 };
 #endif // ADDRESSBOOK_H
