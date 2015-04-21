@@ -1,17 +1,18 @@
 #ifndef ADDRESSBOOK_H
 #define ADDRESSBOOK_H
 #include "string"
+#include "vector"
 
 struct ContactNode{
 	std::string name;
 	int phoneNumber;
-	int Group;
+	std::string Group;
 	ContactNode *next;
 	ContactNode *previous;
 
 	ContactNode(){};
 
-	ContactNode(std::string in_name, int in_phoneNumber, int in_Group){
+	ContactNode(std::string in_name, int in_phoneNumber, string in_Group){
 		name = in_name;
 		phoneNumber = in_phoneNumber;
 		Group = in_Group;
@@ -22,18 +23,17 @@ struct ContactNode{
 class AddressBook
 {
 public:
-    AddressBook();
-    ~AddressBook();
-    void addContact(string, int, string);
-    void deleteContact();
-    void printContacts();
-    void findContact();
-    void editContact();
-    void groupCreate();
-    void addContactToGroup();
-
+	AddressBook();
+	~AddressBook();
+	void addContact(std::string name, int phone, std::string group);
+	void deleteContact(std::string name, int phone, std::string group);
+	void printContacts();
+	ContactNode* findContact();
+	void editContact();
+  	void groupCreate();
+  	void addContactToGroup(std::string name, std::string group);
 private:
-    ContactNode *head;
-    ContactNode *tail;
+	ContactNode *head;
+	ContactNode *tail;
 };
 #endif // ADDRESSBOOK_H

@@ -1,18 +1,17 @@
 #include "AddressBook.h"
+#include "iostream"
+#include "string"
 
-AddressBook::AddressBook()
-{
+AddressBook::AddressBook(){
     head = NULL;
     tail = NULL;
 }
 
-AddressBook::~AddressBook()
-{
+AddressBook::~AddressBook(){
 
 }
 
-void AddressBook::addContact(string name, int phone, string group)
-{
+void AddressBook::addContact(string name, int phone, string group){
     ContactNode *node = ContactNode(name, phone, group);
 
     if(head == NULL)
@@ -30,8 +29,7 @@ void AddressBook::addContact(string name, int phone, string group)
     }
 }
 
-void AddressBook::deleteContact()
-{
+void AddressBook::deleteContact(){
     if(head == NULL)
     {
         cout << "There are no contacts to delete." << endl;
@@ -43,27 +41,23 @@ void AddressBook::deleteContact()
     }
 }
 
-void AddressBook::printContacts()
-{
+void AddressBook::printContacts(){
 
 }
 
-void AddressBook::findContact()
-{
+void AddressBook::findContact(){
 
 }
 
-void AddressBook::editContact()
-{
+void AddressBook::editContact(std::string name){	
 
 }
 
-void AddressBook::groupCreate()
-{
+void AddressBook::groupCreate(){
 
 }
 
-void AddressBook::addContactToGroup()
-{
-
+void AddressBook::addContactToGroup(std::string name, std::string group){
+	ContactNode *node = AddressBook::findContact(name);
+	node->Group = group;
 }
