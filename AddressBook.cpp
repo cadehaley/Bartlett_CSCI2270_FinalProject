@@ -63,7 +63,23 @@ void AddressBook::deleteContact(std::string name){
 }
 
 void AddressBook::printContacts(){
+    //print out name number and group
+    AddressBook::printContacts(head);
+}
 
+void AddressBook::printContacts(ContactNode *node)
+{
+    if (head == NULL)
+    {
+        cout << "There are no contacts to print." << endl;
+    }
+    else
+    {
+        std::cout << "Name: " << node->name << std::endl;
+        std::cout << "Phone Number: " << node->phoneNumber << std::endl;
+        std::cout << "Group: " << node->Group << std::endl;
+        AddressBook::printContacts(node->next);
+    }
 }
 
 ContactNode* AddressBook::findContact(std::string name){
@@ -72,7 +88,41 @@ ContactNode* AddressBook::findContact(std::string name){
 }
 
 void AddressBook::editContact(std::string name){
-
+    std::string userInput;
+    std::string userName;
+    ContactNode *node = AddressBook::findContact(name);
+    std::cout << "1. Name: " << node->name << std::endl;
+    std::cout << "2. Phone Number: " << node->phoneNumber << std::endl;
+    std::cout << "3. Group: " << node->Group << std::endl;
+    std::cout << "To Edit Input Number Corresponding To Item." << std::endl;
+    std::cin >> userInput;
+    switch(userInput)
+    {
+        case 1:
+            std:cout << "Type In New Name: " << std::endl;
+            std::cin.ignore(100, '\n');
+            std::getline(std::cin, userName);
+            node->name = userName;
+            std::cout << "Contacts Name Now Changed To: " << std::endl;
+            std::cout << "Name: " << node->name << endl;
+            break;
+        case 2:
+            std:cout << "Type In New Phone Number: " << std::endl;
+            std::cin.ignore(100, '\n');
+            std::getline(std::cin, userName);
+            node->phoneNumber = std::stoi(userName);
+            std::cout << "Contacts Phone Number Now Changed To: " << std::endl;
+            std::cout << "Phone Number: " << node->phoneNumber << endl;
+            break;
+        case 3:
+            std:cout << "Type In New Group: " << std::endl;
+            std::cin.ignore(100, '\n');
+            std::getline(std::cin, userName);
+            AddressBook::addContactToGroup(node->name, userName);
+            break;
+        default:
+            break;
+    }
 }
 
 void AddressBook::groupCreate(std::string name){

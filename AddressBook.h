@@ -33,6 +33,7 @@ public:
   	void addContactToGroup(std::string name, std::string group);
   	void printGroups();
 private:
+    void printContacts(ContactNode *node);
 	ContactNode *head;
 	ContactNode *tail;
 	std::vector<std::string> GroupNames;
