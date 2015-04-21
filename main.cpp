@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
 		printf("1. Add Contact\n");
 		printf("2. Remove Contact\n");
 		printf("3. Search Contact\n");
-		printf("4. Print Contacts\n", );
+		printf("4. Print Contacts\n");
 		printf("5. Edit Contact\n");
 		printf("6. Create New Group\n");
 		printf("7. Print Groups\n");
