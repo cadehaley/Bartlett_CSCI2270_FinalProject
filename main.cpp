@@ -14,10 +14,11 @@ int main(int argc, char const *argv[])
 		printf("1. Add Contact\n");
 		printf("2. Remove Contact\n");
 		printf("3. Search Contact\n");
-		printf("4. Edit Contact\n");
-		printf("5. Create New Group\n");
-		printf("6. Print Groups\n");
-		printf("7. Quit\n");
+		printf("4. Print Contacts\n", );
+		printf("5. Edit Contact\n");
+		printf("6. Create New Group\n");
+		printf("7. Print Groups\n");
+		printf("8. Quit\n");
 		std::cin>>userInput;
 
 		switch(userInput){
@@ -30,15 +31,17 @@ int main(int argc, char const *argv[])
 			case 4:
 				break;
 			case 5:
+				break;
+			case 6:
 				printf("Enter Name of new Group:\n");
 				std::cin.ignore(100, '\n');
 				std::getline(std::cin, userName);
 				FunctionCall->groupCreate(userName);
 				break;
-			case 6:
+			case 7:
 				FunctionCall->printGroups();
 				break;
-			case 7:
+			case 8:
 				wl = false;
 				break;
 			default:
