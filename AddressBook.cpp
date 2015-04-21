@@ -38,7 +38,27 @@ void AddressBook::deleteContact(std::string name){
 
     else
     {
-	  ContactNode *node = new AddressBook::findContact(name);
+        ContactNode *node = AddressBook::findContact(name);
+        if(node->previous == NULL)
+        {
+            head = head->next;
+            head->previous = NULL;
+            node = NULL;
+        }
+
+        else if(node->next == NULL)
+        {
+            tail = tail->previous;
+            tail->next = NULL;
+            node = NULL;
+        }
+
+        else
+        {
+            node->previous->next = node->next;
+            node->next->previous = node->previous;
+            node = NULL;
+        }
     }
 }
 
@@ -75,7 +95,6 @@ void AddressBook::printGroups(){
 		printf("No Groups have been made yet.\n");
 	}
 	else{
-		//std::cout<<GroupNames[0]<<std::endl;
 		printf("Group Names:\n");
 		for (unsigned int i = 0; i < GroupNames.size(); ++i){
 			std::cout<<GroupNames[i]<<", ";
