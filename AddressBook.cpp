@@ -11,7 +11,7 @@ AddressBook::~AddressBook(){
 
 }
 
-void AddressBook::addContact(string name, int phone, string group){
+void AddressBook::addContact(std::string name, int phone, std::string group){
     ContactNode *node = ContactNode(name, phone, group);
 
     if(head == NULL)
@@ -29,15 +29,35 @@ void AddressBook::addContact(string name, int phone, string group){
     }
 }
 
-void AddressBook::deleteContact(){
+void AddressBook::deleteContact(std::string name){
     if(head == NULL)
     {
-        cout << "There are no contacts to delete." << endl;
+        std::cout << "There are no contacts to delete." << std::endl;
     }
 
     else
     {
-        ContactNode *node = AddressBook::findContact(string, int, int);
+        ContactNode *node = AddressBook::findContact(name);
+        if(node->previous == NULL)
+        {
+            head = head->next;
+            head->previous = NULL;
+            node = NULL;
+        }
+
+        else if(node->next == NULL)
+        {
+            tail = tail->previous;
+            tail->next = NULL;
+            node = NULL;
+        }
+
+        else
+        {
+            node->previous->next = node->next;
+            node->next->previous = node->previous;
+            node = NULL;
+        }
     }
 }
 
@@ -45,11 +65,12 @@ void AddressBook::printContacts(){
 
 }
 
-void AddressBook::findContact(){
-
+ContactNode* AddressBook::findContact(std::string name){
+    ContactNode *node = NULL;
+    return node;
 }
 
-void AddressBook::editContact(std::string name){	
+void AddressBook::editContact(std::string name){
 
 }
 

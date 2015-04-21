@@ -12,7 +12,7 @@ struct ContactNode{
 
 	ContactNode(){};
 
-	ContactNode(std::string in_name, int in_phoneNumber, string in_Group){
+	ContactNode(std::string in_name, int in_phoneNumber, std::string in_Group){
 		name = in_name;
 		phoneNumber = in_phoneNumber;
 		Group = in_Group;
@@ -26,10 +26,10 @@ public:
 	AddressBook();
 	~AddressBook();
 	void addContact(std::string name, int phone, std::string group);
-	void deleteContact(std::string name, int phone, std::string group);
+	void deleteContact(std::string name);
 	void printContacts();
-	ContactNode* findContact();
-	void editContact();
+	ContactNode* findContact(std::string name);
+	void editContact(std::string name);
   	void groupCreate();
   	void addContactToGroup(std::string name, std::string group);
 private:
