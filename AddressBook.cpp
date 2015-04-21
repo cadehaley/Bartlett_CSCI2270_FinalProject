@@ -4,8 +4,8 @@
 #include "vector"
 
 AddressBook::AddressBook(){
-    head = NULL;
-    tail = NULL;
+	head = NULL;
+	tail = NULL;
 }
 
 AddressBook::~AddressBook(){
@@ -13,53 +13,53 @@ AddressBook::~AddressBook(){
 }
 
 void AddressBook::addContact(std::string name, int phone, std::string group){
-    ContactNode *node = new ContactNode(name, phone, group);
+	ContactNode *node = new ContactNode(name, phone);
 
-    if(head == NULL)
-    {
+	if(head == NULL)
+	{
 	  node->previous = NULL;
 	  head = node;
 	  tail = node;
-    }
+	}
 
-    else
-    {
+	else
+	{
 	  node->previous = tail;
 	  tail->next = node;
 	  tail = node;
-    }
+	}
 }
 
 void AddressBook::deleteContact(std::string name){
-    if(head == NULL)
-    {
+	if(head == NULL)
+	{
 	  printf("There are no contacts to delete.\n");
-    }
+	}
 
-    else
-    {
-        ContactNode *node = AddressBook::findContact(name);
-        if(node->previous == NULL)
-        {
-            head = head->next;
-            head->previous = NULL;
-            node = NULL;
-        }
+	else
+	{
+		ContactNode *node = AddressBook::findContact(name);
+		if(node->previous == NULL)
+		{
+			head = head->next;
+			head->previous = NULL;
+			node = NULL;
+		}
 
-        else if(node->next == NULL)
-        {
-            tail = tail->previous;
-            tail->next = NULL;
-            node = NULL;
-        }
+		else if(node->next == NULL)
+		{
+			tail = tail->previous;
+			tail->next = NULL;
+			node = NULL;
+		}
 
-        else
-        {
-            node->previous->next = node->next;
-            node->next->previous = node->previous;
-            node = NULL;
-        }
-    }
+		else
+		{
+			node->previous->next = node->next;
+			node->next->previous = node->previous;
+			node = NULL;
+		}
+	}
 }
 
 void AddressBook::printContacts(){
@@ -87,6 +87,7 @@ void AddressBook::addContactToGroup(std::string name, std::string group){
 	}
 	else{
 		std::cout<<group<<" is not a group. Create it first or Choose from the list of groups."<<std::endl;
+		printf("Contact was not added to group.\n");
 	}
 }
 
@@ -95,9 +96,10 @@ void AddressBook::printGroups(){
 		printf("No Groups have been made yet.\n");
 	}
 	else{
-		printf("Group Names:\n");
-		for (unsigned int i = 0; i < GroupNames.size(); ++i){
-			std::cout<<GroupNames[i]<<", ";
+		printf("Groups:\n");
+		std::cout << GroupNames[0];
+		for (unsigned int i = 1; i < GroupNames.size(); ++i){
+			std::cout<<", "<<GroupNames[i];
 		}
 		std::cout<<std::endl;
 	}
