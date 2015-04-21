@@ -30,10 +30,12 @@ public:
 	void printContacts();
 	ContactNode* findContact(std::string name);
 	void editContact(std::string name);
-  	void groupCreate();
+  	void groupCreate(std::string name);
   	void addContactToGroup(std::string name, std::string group);
+  	void printGroups();
 private:
 	ContactNode *head;
 	ContactNode *tail;
+	std::vector<std::string> GroupNames;
 };
 #endif // ADDRESSBOOK_H

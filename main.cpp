@@ -4,7 +4,9 @@
 
 int main(int argc, char const *argv[])
 {
+	AddressBook *FunctionCall = new AddressBook();
 	bool wl = true;
+	std::string userName;
 
 	while(wl == true){
 		int userInput = 0;
@@ -14,12 +16,12 @@ int main(int argc, char const *argv[])
 		printf("3. Search Contact\n");
 		printf("4. Edit Contact\n");
 		printf("5. Create New Group\n");
-		printf("6. Quit\n");
+		printf("6. Print Groups\n");
+		printf("7. Quit\n");
 		std::cin>>userInput;
 
 		switch(userInput){
 			case 1:
-
 				break;
 			case 2:
 				break;
@@ -28,8 +30,15 @@ int main(int argc, char const *argv[])
 			case 4:
 				break;
 			case 5:
+				printf("Enter Name of new Group:\n");
+				std::cin.ignore(100, '\n');
+				std::getline(std::cin, userName);
+				FunctionCall->groupCreate(userName);
 				break;
 			case 6:
+				FunctionCall->printGroups();
+				break;
+			case 7:
 				wl = false;
 				break;
 			default:

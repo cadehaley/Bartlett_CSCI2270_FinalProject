@@ -13,5 +13,6 @@ The contacts will be stored in a doubly linked list.
 - Print Contacts -Sarah
 - Group create -Jack
 - Group Contacts -Jack
-- Possible JSON functions to be added -On Hold
+- Print Groups -Jack
+- Add Text file read and write -On Hold
 - More Functions to be determined
