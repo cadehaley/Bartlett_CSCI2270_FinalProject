@@ -5,13 +5,10 @@
 int main(int argc, char const *argv[])
 {
 	AddressBook *FunctionCall = new AddressBook();
-	bool wl = true;
+	bool whileLoop = true;
 	std::string userName;
-	std::string SphoneNumber;
-	int phoneNumber;
-	std::string groupName;
 
-	while(wl == true){
+	while(whileLoop == true){
 		int userInput = 0;
 		printf("===Address Book===\n");
 		printf("1. Add Contact\n");
@@ -26,34 +23,23 @@ int main(int argc, char const *argv[])
 
 		switch(userInput){
 			case 1:
-			    printf("Enter the name of a contact that you would like to add:\n");
-			    std::cin.ignore(100, '\n');
-			    std::getline(std::cin, userName);
-			    printf("Enter the phone number for the contact:\n");
-			    std::getline(std::cin, SphoneNumber);
-			    phoneNumber = std::stoi(SphoneNumber);
-			    printf("Enter the group you would like to add this contact to:\n");
-			    std::getline(std::cin, groupName);
-			    FunctionCall->addContact(userName, phoneNumber, groupName);
-			    printf("Contact has been added.\n");
 				break;
 			case 2:
-			    printf("Enter the name of the contact that you would like to delete:\n");
-			    std::cin.ignore(100, '\n');
-			    std::getline(std::cin, userName);
-			    FunctionCall->deleteContact(userName);
-			    printf("Contact has been deleted.\n");
 				break;
 			case 3:
 				break;
             case 4:
+                // Calls the printContact function
                 FunctionCall->printContacts();
                 break;
 			case 5:
 			    printf("Name of Contact You Wish To Change:\n");
+			    // This is for even if you have spaces or periods in the input line you will still get the whole thing
 				std::cin.ignore(100, '\n');
-				std::getline(std::cin, userName);
-			    FunctionCall->editContact(userName);
+				// This gets the whole input line and puts it into the userNew
+				std::getline(std::cin, userNew);
+				// Calls the editContact function
+			    FunctionCall->editContact(userNew);
 				break;
 			case 6:
 				printf("Enter Name of new Group:\n");
@@ -65,7 +51,7 @@ int main(int argc, char const *argv[])
 				FunctionCall->printGroups();
 				break;
 			case 8:
-				wl = false;
+				whileLoop = false;
 				break;
 			default:
 				break;
