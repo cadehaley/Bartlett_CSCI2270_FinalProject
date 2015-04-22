@@ -13,8 +13,7 @@ AddressBook::~AddressBook(){
 }
 
 void AddressBook::addContact(std::string name, int phone, std::string group){
-    ContactNode *node = new ContactNode(name, phone);
-    AddressBook::addContactToGroup(name, group);
+	ContactNode *node = new ContactNode(name, phone);
 
 	if(head == NULL)
 	{
@@ -28,7 +27,7 @@ void AddressBook::addContact(std::string name, int phone, std::string group){
 	  node->previous = tail;
 	  tail->next = node;
 	  tail = node;
-    }
+	}
 }
 
 void AddressBook::deleteContact(std::string name){
@@ -64,21 +63,24 @@ void AddressBook::deleteContact(std::string name){
 }
 
 void AddressBook::printContacts(){
-    //print out name number and group
+    // Calls the private function printContacts
     AddressBook::printContacts(head);
 }
 
 void AddressBook::printContacts(ContactNode *node)
 {
+    // It will enter this if statement if the head of the list is NULL it means there are no contacts to print out
     if (head == NULL)
     {
-        cout << "There are no contacts to print." << endl;
+        std::cout << "There are no contacts to print." << std::endl;
     }
+    // If the head does not equal NULL it will enter this else statement and print out the contact info
     else
     {
         std::cout << "Name: " << node->name << std::endl;
         std::cout << "Phone Number: " << node->phoneNumber << std::endl;
         std::cout << "Group: " << node->Group << std::endl;
+        // This moves it to the next contact and it will keep doing that until there are not anymore
         AddressBook::printContacts(node->next);
     }
 }
@@ -89,37 +91,54 @@ ContactNode* AddressBook::findContact(std::string name){
 }
 
 void AddressBook::editContact(std::string name){
+    // What type of information they are going to change
     std::string userInput;
-    std::string userName;
+    // The new information they want to put in
+    std::string userNew;
+    // Finds which contact you are looking for
     ContactNode *node = AddressBook::findContact(name);
     std::cout << "1. Name: " << node->name << std::endl;
     std::cout << "2. Phone Number: " << node->phoneNumber << std::endl;
     std::cout << "3. Group: " << node->Group << std::endl;
     std::cout << "To Edit Input Number Corresponding To Item." << std::endl;
+    // Takes in what option the user wants to change
     std::cin >> userInput;
+    // This is where we are going to switch the old contact info with the new contact info we want to put in
     switch(userInput)
     {
+        // Case 1 is for the name
         case 1:
             std:cout << "Type In New Name: " << std::endl;
+            // This is for even if you have spaces or periods in the input line you will still get the whole thing
             std::cin.ignore(100, '\n');
-            std::getline(std::cin, userName);
-            node->name = userName;
+            // This gets the whole input line and puts it into the userNew
+            std::getline(std::cin, userNew);
+            // This changes the nodes name to userNew name
+            node->name = userNew;
             std::cout << "Contacts Name Now Changed To: " << std::endl;
-            std::cout << "Name: " << node->name << endl;
+            std::cout << "Name: " << node->name << std::endl;
             break;
+        // Case 2 is for the phone number
         case 2:
             std:cout << "Type In New Phone Number: " << std::endl;
+            // This is for even if you have spaces or periods in the input line you will still get the whole thing
             std::cin.ignore(100, '\n');
-            std::getline(std::cin, userName);
-            node->phoneNumber = std::stoi(userName);
+            // This gets the whole input line and puts it into the userNew
+            std::getline(std::cin, userNew);
+            // This changes the nodes phone number to userNew phone number
+            node->phoneNumber = std::stoi(userNew);
             std::cout << "Contacts Phone Number Now Changed To: " << std::endl;
-            std::cout << "Phone Number: " << node->phoneNumber << endl;
+            std::cout << "Phone Number: " << node->phoneNumber << std::endl;
             break;
+        // Case 3 if for the group
         case 3:
             std:cout << "Type In New Group: " << std::endl;
+            // This is for even if you have spaces or periods in the input line you will still get the whole thing
             std::cin.ignore(100, '\n');
-            std::getline(std::cin, userName);
-            AddressBook::addContactToGroup(node->name, userName);
+            // This gets the whole input line and puts it into the userNew
+            std::getline(std::cin, userNew);
+            // Calls the addContactToGroup function
+            AddressBook::addContactToGroup(node->name, userNew);
             break;
         default:
             break;
@@ -137,7 +156,7 @@ void AddressBook::addContactToGroup(std::string name, std::string group){
 		node->Group = group;
 	}
 	else{
-		std::cout<<group<<" is not a group. Create it first or choose from the list of groups."<<std::endl;
+		std::cout<<group<<" is not a group. Create it first or Choose from the list of groups."<<std::endl;
 		printf("Contact was not added to a group.\n");
 	}
 }
