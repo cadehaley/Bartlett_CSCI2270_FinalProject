@@ -16,3 +16,12 @@ The contacts will be stored in a doubly linked list.
 - Print Groups -Jack
 - Add Text file read and write -On Hold
 - More Functions to be determined
+
+**How to compile with make file**
+
+- Download main.cpp, AddressBook.cpp, AddressBook.h, and Makefile
+- Move all file to the same directory
+- Goto the folder with the terminal
+- Type "make" to compile the program
+- To run type "./main"
+- Type "make clean" to clean the directory (Removes main and all .a and .o files)
