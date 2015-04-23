@@ -12,7 +12,6 @@ int main(int argc, char const *argv[])
 	std::string in_name;
 	std::string in_number;
 	std::string in_group;
-	bool readFile = true;
 
 	std::ifstream inFile("Added_Contacts.txt");
 	if(inFile.is_open()){
@@ -30,8 +29,8 @@ int main(int argc, char const *argv[])
 			FunctionCall->addContact(in_name,in_number2,in_group);
 		}
 	}
-	inFile.close()
-	std::ofstream outFile("Added_Contacts.txt", std::ios_base::app | std::ios_base::out)
+	inFile.close();
+	std::ofstream outFile("Added_Contacts.txt", std::ios_base::app | std::ios_base::out);
 	while(whileLoop == true){
 		int userInput = 0;
 		printf("===Address Book===\n");
@@ -82,6 +81,6 @@ int main(int argc, char const *argv[])
 				break;
 		}
 	}
-	outFile.close()
+	outFile.close();
 	return 0;
 }

@@ -92,7 +92,7 @@ ContactNode* AddressBook::findContact(std::string name){
 
 void AddressBook::editContact(std::string name){
     // What type of information they are going to change
-    std::string userInput;
+    int userInput;
     // The new information they want to put in
     std::string userNew;
     // Finds which contact you are looking for
@@ -108,7 +108,7 @@ void AddressBook::editContact(std::string name){
     {
         // Case 1 is for the name
         case 1:
-            std:cout << "Type In New Name: " << std::endl;
+            std::cout << "Type In New Name: " << std::endl;
             // This is for even if you have spaces or periods in the input line you will still get the whole thing
             std::cin.ignore(100, '\n');
             // This gets the whole input line and puts it into the userNew
@@ -120,7 +120,7 @@ void AddressBook::editContact(std::string name){
             break;
         // Case 2 is for the phone number
         case 2:
-            std:cout << "Type In New Phone Number: " << std::endl;
+            std::cout << "Type In New Phone Number: " << std::endl;
             // This is for even if you have spaces or periods in the input line you will still get the whole thing
             std::cin.ignore(100, '\n');
             // This gets the whole input line and puts it into the userNew
@@ -132,7 +132,7 @@ void AddressBook::editContact(std::string name){
             break;
         // Case 3 if for the group
         case 3:
-            std:cout << "Type In New Group: " << std::endl;
+            std::cout << "Type In New Group: " << std::endl;
             // This is for even if you have spaces or periods in the input line you will still get the whole thing
             std::cin.ignore(100, '\n');
             // This gets the whole input line and puts it into the userNew
