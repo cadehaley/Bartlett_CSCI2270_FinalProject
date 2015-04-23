@@ -146,6 +146,12 @@ void AddressBook::editContact(std::string name){
 }
 
 void AddressBook::groupCreate(std::string name){
+	for (unsigned int i = 0; i < GroupNames.size(); i++) {
+		if(GroupNames[i] == name){
+			printf("Group already exsits\n");
+			return;
+		}
+	}
 	GroupNames.push_back(name);
 	std::cout<<"Group "<<name<<" was created."<<std::endl;
 }
