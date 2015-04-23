@@ -4,25 +4,25 @@ EXE=main
 # Main target
 all: $(EXE)
 
-#  MinGW
+# MinGW
 ifeq "$(OS)" "Windows_NT"
 CFLG=-O3 -Wall
 LIBS=
 CLEAN=del *.exe *.o *.a
 else
 
-#  OSX
+# OSX
 ifeq "$(shell uname)" "Darwin"
 CFLG=-O3 -Wall -Wno-deprecated-declarations
 LIBS=
 
-#  Linux/Unix/Solaris
+# Linux/Unix/Solaris
 else
 CFLG=-O3 -Wall -std=c++0x
 LIBS=
 endif
 
-#  OSX/Linux/Unix/Solaris
+# OSX/Linux/Unix/Solaris
 CLEAN=rm -f $(EXE) *.o *.a
 endif
 
@@ -37,10 +37,10 @@ $(OBJECT): $(SOURCES)
 .cpp.o:
 	g++ -c $(CFLG) $<
 
-#  Link
+# Link
 $(EXE):$(OBJECTS)
 	g++ -O3 -o $@ $^   $(LIBS)
 
-#  Clean
+# Clean
 clean:
 	$(CLEAN)

@@ -19,7 +19,7 @@ The contacts will be stored in a doubly linked list.
 **How to compile with make file**
 
 - Download main.cpp, AddressBook.cpp, AddressBook.h, and Makefile
-- Move all file to the same directory
+- Move all the files to the same directory
 - Goto the folder with the terminal
 - Type "make" to compile the program
 - To run type "./main"
