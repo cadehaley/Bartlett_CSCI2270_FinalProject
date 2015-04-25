@@ -25,3 +25,9 @@ The contacts will be stored in a doubly linked list.
 - Type "make" to compile the program
 - To run type "./main"
 - Type "make clean" to clean the directory (Removes main and all .a and .o files)
+
+**Requests for Phase 3 of the project**
+- Added_Contacts.txt is not adding any of the contacts in the file to the linked list
+- When trying to print the contact's group name it shows up as blank
+- Add any function that would improve the program
+- edit any of the function to improve the program
