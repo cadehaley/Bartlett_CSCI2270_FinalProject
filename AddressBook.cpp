@@ -3,15 +3,18 @@
 #include "string"
 #include "vector"
 
+// Constructor
 AddressBook::AddressBook(){
 	head = NULL;
 	tail = NULL;
 }
 
+// Destructor
 AddressBook::~AddressBook(){
 
 }
 
+// Adds contacts to the address book
 void AddressBook::addContact(std::string name, int phone, std::string group){
 	ContactNode *node = new ContactNode(name, phone);
 
@@ -30,6 +33,7 @@ void AddressBook::addContact(std::string name, int phone, std::string group){
 	}
 }
 
+// Deletes contacts from the address book
 void AddressBook::deleteContact(std::string name){
 	if(head == NULL)
 	{
@@ -62,11 +66,13 @@ void AddressBook::deleteContact(std::string name){
 	}
 }
 
+// Public function that call the private function
 void AddressBook::printContacts(){
     // Calls the private function printContacts
     AddressBook::printContacts(head);
 }
 
+// Private function that prints the contacts
 void AddressBook::printContacts(ContactNode *node)
 {
     // It will enter this if statement if the head of the list is NULL it means there are no contacts to print out
@@ -85,11 +91,13 @@ void AddressBook::printContacts(ContactNode *node)
     }
 }
 
+// Finds the contacts in the address book
 ContactNode* AddressBook::findContact(std::string name){
 	ContactNode *node = NULL;
 	return node;
 }
 
+// Edits the contacts in the address book
 void AddressBook::editContact(std::string name){
     // What type of information they are going to change
     int userInput;
@@ -145,6 +153,7 @@ void AddressBook::editContact(std::string name){
     }
 }
 
+// Creates a group within the address book
 void AddressBook::groupCreate(std::string name){
 	for (unsigned int i = 0; i < GroupNames.size(); i++) {
 		if(GroupNames[i] == name){
@@ -156,6 +165,7 @@ void AddressBook::groupCreate(std::string name){
 	std::cout<<"Group "<<name<<" was created."<<std::endl;
 }
 
+// Adds the contacts into the group we created
 void AddressBook::addContactToGroup(std::string name, std::string group){
 	ContactNode *node = AddressBook::findContact(name);
 	if(node != NULL){
@@ -167,6 +177,7 @@ void AddressBook::addContactToGroup(std::string name, std::string group){
 	}
 }
 
+// Print out the different groups
 void AddressBook::printGroups(){
 	if(GroupNames.empty()){
 		printf("No Groups have been made yet.\n");
