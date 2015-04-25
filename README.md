@@ -6,15 +6,15 @@ The contacts will be stored in a doubly linked list.
 
 **Functions:**
 
-- Add Contact -Finished
-- Remove Contact -Finished
-- Edit Contact -Finished
-- Find Contact -Unfinished
-- Print Contacts -Finished
-- Group create -Finished
-- Group Contacts -Finished
-- Print Groups -Finished
-- Remove Group -Finished
+- Add Contact
+- Remove Contact
+- Edit Contact
+- Find Contact
+- Print Contacts
+- Group create
+- Group Contacts
+- Print Groups
+- Remove Group
 - More Functions to be determined
 
 **How to compile with make file**
