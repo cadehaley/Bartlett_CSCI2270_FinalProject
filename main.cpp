@@ -45,8 +45,9 @@ int main(int argc, char const *argv[])
 		printf("4. Print Contacts\n");
 		printf("5. Edit Contact\n");
 		printf("6. Create New Group\n");
-		printf("7. Print Groups\n");
-		printf("8. Quit\n");
+		printf("7. Remove Group\n", );
+		printf("8. Print Groups\n");
+		printf("9. Quit\n");
         // This takes in what number the user inputed
 		std::cin>>userInput;
 
@@ -54,13 +55,29 @@ int main(int argc, char const *argv[])
 		switch(userInput){
 		    // If the user enters 1
 			case 1:
-				outFile<<in_name<<","<<in_number<<","<<in_group<<std::endl;
+				printf("Enter the name of the contact:\n");
+				std::cin.ignore(100, '\n');
+				std::getline(std::cin, in_name);
+				printf("Enter the phonenumber of the contact:\n");
+				std::getline(std::cin, in_number);
+				printf("Enter the Group of the contact:\n");
+				std::getline(std::cin, in_group);
+				FunctionCall->addContact(in_name,in_number,in_group);
+`				outFile<<in_name<<","<<in_number<<","<<in_group<<std::endl;
 				break;
             // If the user enters 2
 			case 2:
+				printf("Enter the name of the contact you want to remove:\n");
+				std::cin.ignore(100, '\n');
+				std::getline(std::cin, in_name);
+				FunctionCall->deleteContact(in_name);
 				break;
             // If the user enters 3
 			case 3:
+				printf("Enter the name of the contact:\n");
+				std::cin.ignore(100, '\n');
+				std::getline(std::cin, in_name);
+				FunctionCall->findContact(in_name);
 				break;
             // If the user enter 4
             case 4:
@@ -86,10 +103,17 @@ int main(int argc, char const *argv[])
 				break;
             // If the user enters 7
 			case 7:
+				printf("Enter Name of new Group:\n");
+				std::cin.ignore(100, '\n');
+				std::getline(std::cin, in_group);
+				FunctionCall->removeGroup(in_group);
+`				break;
+			// If the user enters 8
+			case 8:
 				FunctionCall->printGroups();
 				break;
-            // If the user enters 8
-			case 8:
+            // If the user enters 9
+			case 9:
 				whileLoop = false;
 				break;
             // If the user enters anything else

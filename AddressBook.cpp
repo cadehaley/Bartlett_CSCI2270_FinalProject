@@ -177,6 +177,29 @@ void AddressBook::addContactToGroup(std::string name, std::string group){
 	}
 }
 
+void addressBook::removeGroup(std::string group){
+	bool isReal = false;
+	for (unsigned int i = 0; i < GroupNames.size(); i++) {
+		if(GroupNames[i] == group){
+			GroupNames.erase(GroupNames[i]);
+			isReal = true;
+		}
+	}
+	if(isReal == False)(
+		printf("That is not a Group\n");
+	)
+	else{
+		ContactNode *node = head;
+		while(node->next != NULL){
+			if(node->Group == group){
+				node->Group = "";
+				std::cout << node->name << " was removed from " << group << std::endl;
+			}
+			node = node->next;
+		}
+	}
+}
+
 // Print out the different groups
 void AddressBook::printGroups(){
 	if(GroupNames.empty()){

@@ -14,6 +14,7 @@ The contacts will be stored in a doubly linked list.
 - Group create -Finished
 - Group Contacts -Finished
 - Print Groups -Finished
+- Remove Group -Finished
 - More Functions to be determined
 
 **How to compile with make file**

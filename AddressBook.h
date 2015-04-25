@@ -31,6 +31,7 @@ public:
 	void editContact(std::string name);
   	void groupCreate(std::string name);
   	void addContactToGroup(std::string name, std::string group);
+	void removeGroup(std::string group);
   	void printGroups();
 private:
     void printContacts(ContactNode *node);
