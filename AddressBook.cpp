@@ -20,16 +20,18 @@ void AddressBook::addContact(std::string name, int phone, std::string group){
 
 	if(head == NULL)
 	{
-	  node->previous = NULL;
-	  head = node;
-	  tail = node;
+		node->previous = NULL;
+		head = node;
+		tail = node;
+		AddressBook::addContactToGroup(name, group);
 	}
 
 	else
 	{
-	  node->previous = tail;
-	  tail->next = node;
-	  tail = node;
+		node->previous = tail;
+		tail->next = node;
+		tail = node;
+		AddressBook::addContactToGroup(name, group);
 	}
 }
 
@@ -87,13 +89,25 @@ void AddressBook::printContacts(ContactNode *node)
         std::cout << "Phone Number: " << node->phoneNumber << std::endl;
         std::cout << "Group: " << node->Group << std::endl;
         // This moves it to the next contact and it will keep doing that until there are not anymore
-        AddressBook::printContacts(node->next);
+        if(node->next != NULL){
+			AddressBook::printContacts(node->next);
+		}
     }
 }
 
 // Finds the contacts in the address book
 ContactNode* AddressBook::findContact(std::string name){
-	ContactNode *node = NULL;
+	ContactNode *node = new ContactNode();
+	ContactNode *runner = head;
+	while(runner->next != NULL){
+		if(runner->name == name){
+			node = runner;
+		}
+		runner = runner->next;
+	}
+	if(node == NULL){
+		printf("Contact does not exist or was misspelled\n");
+	}
 	return node;
 }
 
@@ -172,27 +186,28 @@ void AddressBook::addContactToGroup(std::string name, std::string group){
 		node->Group = group;
 	}
 	else{
+		node->Group = " ";
 		std::cout<<group<<" is not a group. Create it first or Choose from the list of groups."<<std::endl;
 		printf("Contact was not added to a group.\n");
 	}
 }
 
-void addressBook::removeGroup(std::string group){
+void AddressBook::removeGroup(std::string group){
 	bool isReal = false;
-	for (unsigned int i = 0; i < GroupNames.size(); i++) {
+	for(unsigned int i = 0; i < GroupNames.size(); i++){
 		if(GroupNames[i] == group){
-			GroupNames.erase(GroupNames[i]);
+			GroupNames.erase(GroupNames.begin()+i);
 			isReal = true;
 		}
 	}
-	if(isReal == False)(
+	if(isReal == false){
 		printf("That is not a Group\n");
-	)
+	}
 	else{
 		ContactNode *node = head;
 		while(node->next != NULL){
 			if(node->Group == group){
-				node->Group = "";
+				node->Group = " ";
 				std::cout << node->name << " was removed from " << group << std::endl;
 			}
 			node = node->next;

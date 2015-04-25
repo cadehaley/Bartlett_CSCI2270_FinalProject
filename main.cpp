@@ -14,16 +14,17 @@ int main(int argc, char const *argv[])
 	std::string in_name;
 	std::string in_number;
 	std::string in_group;
+	int in_number2;
 
 	std::ifstream inFile("Added_Contacts.txt");
-	if(inFile.is_open()){
+	if(inFile.peek() == std::ifstream::traits_type::eof()){
 		while(std::getline(inFile, line)){
 			std::stringstream iss(line);
 
 			std::getline(iss,in_name,',');
 
 			std::getline(iss,in_number,',');
-			int in_number2 = stoi(in_number);
+			in_number2 = stoi(in_number);
 
 			std::getline(iss,in_group,',');
 
@@ -45,7 +46,7 @@ int main(int argc, char const *argv[])
 		printf("4. Print Contacts\n");
 		printf("5. Edit Contact\n");
 		printf("6. Create New Group\n");
-		printf("7. Remove Group\n", );
+		printf("7. Remove Group\n");
 		printf("8. Print Groups\n");
 		printf("9. Quit\n");
         // This takes in what number the user inputed
@@ -60,10 +61,11 @@ int main(int argc, char const *argv[])
 				std::getline(std::cin, in_name);
 				printf("Enter the phonenumber of the contact:\n");
 				std::getline(std::cin, in_number);
+				in_number2 = stoi(in_number);
 				printf("Enter the Group of the contact:\n");
 				std::getline(std::cin, in_group);
-				FunctionCall->addContact(in_name,in_number,in_group);
-`				outFile<<in_name<<","<<in_number<<","<<in_group<<std::endl;
+				FunctionCall->addContact(in_name,in_number2,in_group);
+				outFile<<in_name<<","<<in_number<<","<<in_group<<std::endl;
 				break;
             // If the user enters 2
 			case 2:
@@ -107,7 +109,7 @@ int main(int argc, char const *argv[])
 				std::cin.ignore(100, '\n');
 				std::getline(std::cin, in_group);
 				FunctionCall->removeGroup(in_group);
-`				break;
+				break;
 			// If the user enters 8
 			case 8:
 				FunctionCall->printGroups();

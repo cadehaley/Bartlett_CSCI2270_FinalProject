@@ -15,6 +15,7 @@ struct ContactNode{
 	ContactNode(std::string in_name, int in_phoneNumber){
 		name = in_name;
 		phoneNumber = in_phoneNumber;
+		Group = " ";
 		next = NULL;
 	}
 };
