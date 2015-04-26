@@ -48,7 +48,10 @@ int main(int argc, char const *argv[])
 		printf("6. Create New Group\n");
 		printf("7. Remove Group\n");
 		printf("8. Print Groups\n");
-		printf("9. Quit\n");
+		printf("9. Add Favorite\n");
+		printf("10. Remove Favorite\n");
+        printf("11. Print Favorites\n");
+		printf("12. Quit\n");
         // This takes in what number the user inputed
 		std::cin>>userInput;
 
@@ -115,7 +118,25 @@ int main(int argc, char const *argv[])
 				FunctionCall->printGroups();
 				break;
             // If the user enters 9
-			case 9:
+            case 9:
+				printf("Enter the name of the contact:\n");
+				std::cin.ignore(100, '\n');
+				std::getline(std::cin, in_name);
+				FunctionCall->addFavorite(in_name);
+				break;
+            // If the user enters 10
+            case 10:
+				printf("Enter the name of the contact:\n");
+				std::cin.ignore(100, '\n');
+				std::getline(std::cin, in_name);
+				FunctionCall->removeFavorite(in_name);
+				break;
+            // If the user enters 11
+            case 11:
+				FunctionCall->printFavorites();
+				break;
+            // If the user enters 12
+			case 12:
 				whileLoop = false;
 				break;
             // If the user enters anything else
