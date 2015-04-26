@@ -7,6 +7,7 @@ struct ContactNode{
 	std::string name;
 	int phoneNumber;
 	std::string Group;
+	bool Favorite;
 	ContactNode *next;
 	ContactNode *previous;
 
@@ -16,6 +17,7 @@ struct ContactNode{
 		name = in_name;
 		phoneNumber = in_phoneNumber;
 		Group = " ";
+		Favorite = false;
 		next = NULL;
 	}
 };
@@ -34,8 +36,15 @@ public:
   	void addContactToGroup(std::string name, std::string group);
 	void removeGroup(std::string group);
   	void printGroups();
+  	void addFavorite(std::string name);
+  	void removeFavorite(std::string name);
+  	void printFavorites();
+
+
 private:
     void printContacts(ContactNode *node);
+    void printFavorites(ContactNode *node);
+
 	ContactNode *head;
 	ContactNode *tail;
 	std::vector<std::string> GroupNames;
