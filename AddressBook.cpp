@@ -20,16 +20,18 @@ void AddressBook::addContact(std::string name, int phone, std::string group){
 
 	if(head == NULL)
 	{
-	  node->previous = NULL;
-	  head = node;
-	  tail = node;
+		node->previous = NULL;
+		head = node;
+		tail = node;
+		AddressBook::addContactToGroup(name, group);
 	}
 
 	else
 	{
-	  node->previous = tail;
-	  tail->next = node;
-	  tail = node;
+		node->previous = tail;
+		tail->next = node;
+		tail = node;
+		AddressBook::addContactToGroup(name, group);
 	}
 }
 
@@ -86,21 +88,34 @@ void AddressBook::printContacts(ContactNode *node)
         std::cout << "Name: " << node->name << std::endl;
         std::cout << "Phone Number: " << node->phoneNumber << std::endl;
         std::cout << "Group: " << node->Group << std::endl;
+
         // This moves it to the next contact and it will keep doing that until there are not anymore
-        AddressBook::printContacts(node->next);
+        if(node->next != NULL){
+			AddressBook::printContacts(node->next);
+		}
     }
 }
 
 // Finds the contacts in the address book
 ContactNode* AddressBook::findContact(std::string name){
-	ContactNode *node = NULL;
+	ContactNode *node = new ContactNode();
+	ContactNode *runner = head;
+	while(runner->next != NULL){
+		if(runner->name == name){
+			node = runner;
+		}
+		runner = runner->next;
+	}
+	if(node == NULL){
+		printf("Contact does not exist or was misspelled\n");
+	}
 	return node;
 }
 
 // Edits the contacts in the address book
 void AddressBook::editContact(std::string name){
     // What type of information they are going to change
-    std::string userInput;
+    int userInput;
     // The new information they want to put in
     std::string userNew;
     // Finds which contact you are looking for
@@ -116,7 +131,7 @@ void AddressBook::editContact(std::string name){
     {
         // Case 1 is for the name
         case 1:
-            std:cout << "Type In New Name: " << std::endl;
+            std::cout << "Type In New Name: " << std::endl;
             // This is for even if you have spaces or periods in the input line you will still get the whole thing
             std::cin.ignore(100, '\n');
             // This gets the whole input line and puts it into the userNew
@@ -128,7 +143,7 @@ void AddressBook::editContact(std::string name){
             break;
         // Case 2 is for the phone number
         case 2:
-            std:cout << "Type In New Phone Number: " << std::endl;
+            std::cout << "Type In New Phone Number: " << std::endl;
             // This is for even if you have spaces or periods in the input line you will still get the whole thing
             std::cin.ignore(100, '\n');
             // This gets the whole input line and puts it into the userNew
@@ -140,7 +155,7 @@ void AddressBook::editContact(std::string name){
             break;
         // Case 3 if for the group
         case 3:
-            std:cout << "Type In New Group: " << std::endl;
+            std::cout << "Type In New Group: " << std::endl;
             // This is for even if you have spaces or periods in the input line you will still get the whole thing
             std::cin.ignore(100, '\n');
             // This gets the whole input line and puts it into the userNew
@@ -155,6 +170,12 @@ void AddressBook::editContact(std::string name){
 
 // Creates a group within the address book
 void AddressBook::groupCreate(std::string name){
+	for (unsigned int i = 0; i < GroupNames.size(); i++) {
+		if(GroupNames[i] == name){
+			printf("Group already exsits\n");
+			return;
+		}
+	}
 	GroupNames.push_back(name);
 	std::cout<<"Group "<<name<<" was created."<<std::endl;
 }
@@ -166,8 +187,32 @@ void AddressBook::addContactToGroup(std::string name, std::string group){
 		node->Group = group;
 	}
 	else{
+		node->Group = " ";
 		std::cout<<group<<" is not a group. Create it first or Choose from the list of groups."<<std::endl;
 		printf("Contact was not added to a group.\n");
+	}
+}
+
+void AddressBook::removeGroup(std::string group){
+	bool isReal = false;
+	for(unsigned int i = 0; i < GroupNames.size(); i++){
+		if(GroupNames[i] == group){
+			GroupNames.erase(GroupNames.begin()+i);
+			isReal = true;
+		}
+	}
+	if(isReal == false){
+		printf("That is not a Group\n");
+	}
+	else{
+		ContactNode *node = head;
+		while(node->next != NULL){
+			if(node->Group == group){
+				node->Group = " ";
+				std::cout << node->name << " was removed from " << group << std::endl;
+			}
+			node = node->next;
+		}
 	}
 }
 
@@ -184,4 +229,67 @@ void AddressBook::printGroups(){
 		}
 		std::cout<<std::endl;
 	}
+}
+
+// Add contacts to default group favorites
+void AddressBook::addFavorite(std::string name){
+    ContactNode *node = AddressBook::findContact(name);
+	if(node != NULL){
+        if(node->Favorite == true){
+            printf("Already in favorites.\n");
+        }
+        else{
+		node->Favorite = true;
+        }
+	}
+	else{
+		node->Favorite = false;
+		std::cout<<name<<" could not be found"<<std::endl;
+		printf("Contact was not added to favorites.\n");
+	}
+
+}
+
+// Remove from favorites
+void AddressBook::removeFavorite(std::string name){
+    ContactNode *node = AddressBook::findContact(name);
+	if(node != NULL){
+		if(node->Favorite == true){
+            node->Favorite = false;
+            std::cout<<node->name<<" removed from favorites"<<std::endl;
+		}
+        else if(node->Favorite == false){
+            std::cout<<name<<" not in favorites"<<std::endl;
+        }
+    }
+    else{
+		node->Favorite = false;
+		std::cout<<name<<" could not be found"<<std::endl;
+	}
+}
+
+void AddressBook::printFavorites(){
+    // Calls the private function printFavorites
+    AddressBook::printFavorites(head);
+}
+
+// Private function that prints the favorites
+void AddressBook::printFavorites(ContactNode *node){
+    // It will enter this if statement if the head of the list is NULL it means there are no contacts to print out
+    if (head == NULL)
+    {
+        std::cout << "There are no contacts to print." << std::endl;
+    }
+    // If the head does not equal NULL it will enter this else statement and print out the contact info of the favorite
+    else if(node->Favorite == true)
+    {
+        std::cout << "Name: " << node->name << std::endl;
+        std::cout << "Phone Number: " << node->phoneNumber << std::endl;
+        std::cout << "Group: " << node->Group << std::endl;
+
+        // This moves it to the next favorite and it will keep doing that until there are not anymore
+        if(node->next != NULL){
+			AddressBook::printFavorites(node->next);
+		}
+    }
 }
