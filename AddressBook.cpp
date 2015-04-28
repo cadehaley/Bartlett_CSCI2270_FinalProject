@@ -3,18 +3,40 @@
 #include "string"
 #include "vector"
 
-// Constructor
+/*
+Function Prototype:
+AddressBook();
+
+Function Description:
+This is the constructor. We initialize the head and tail to NULL
+*/
 AddressBook::AddressBook(){
 	head = NULL;
 	tail = NULL;
 }
 
-// Destructor
+/*
+Function Prototype:
+~AddressBook();
+
+Function Description:
+This is the destructor.
+*/
 AddressBook::~AddressBook(){
 
 }
 
-// Adds contacts to the address book
+/*
+Function Prototype:
+void addContact(std::string name, int phone, std::string group);
+
+Function Description:
+This function adds contacts to the address book.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->addContact("John Doe");
+*/
 void AddressBook::addContact(std::string name, int phone, std::string group){
 	ContactNode *node = new ContactNode(name, phone);
 
@@ -35,7 +57,17 @@ void AddressBook::addContact(std::string name, int phone, std::string group){
 	}
 }
 
-// Deletes contacts from the address book
+/*
+Function Prototype:
+void deleteContact(std::string name);
+
+Function Description:
+This function deletes contacts from the address book.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->deleteContact("John Doe");
+*/
 void AddressBook::deleteContact(std::string name){
 	if(head == NULL)
 	{
@@ -68,13 +100,34 @@ void AddressBook::deleteContact(std::string name){
 	}
 }
 
-// Public function that call the private function
+/*
+Function Prototype:
+void printContacts();
+
+Function Description:
+This is the public function of printContacts that calls the private function printContacts.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->printContacts();
+*/
 void AddressBook::printContacts(){
     // Calls the private function printContacts
     AddressBook::printContacts(head);
 }
 
-// Private function that prints the contacts
+/*
+Function Prototype:
+void printContacts(ContactNode *node);
+
+Function Description:
+This is the private function of printContacts that the public function of printContacts calls.
+This is the function that actually prints the contacts.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->printContacts();
+*/
 void AddressBook::printContacts(ContactNode *node)
 {
     // It will enter this if statement if the head of the list is NULL it means there are no contacts to print out
@@ -96,7 +149,17 @@ void AddressBook::printContacts(ContactNode *node)
     }
 }
 
-// Finds the contacts in the address book
+/*
+Function Prototype:
+ContactNode* findContact(std::string name);
+
+Function Description:
+This function finds the contacts in the address book. It uses the type ContactNode*.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->findContact("John Doe");
+*/
 ContactNode* AddressBook::findContact(std::string name){
 	ContactNode *node = new ContactNode();
 	ContactNode *runner = head;
@@ -112,7 +175,17 @@ ContactNode* AddressBook::findContact(std::string name){
 	return node;
 }
 
-// Edits the contacts in the address book
+/*
+Function Prototype:
+void editContact(std::string name);
+
+Function Description:
+This function edits the contacts in the address book.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->editContact("John Doe");
+*/
 void AddressBook::editContact(std::string name){
     // What type of information they are going to change
     int userInput;
@@ -168,7 +241,17 @@ void AddressBook::editContact(std::string name){
     }
 }
 
-// Creates a group within the address book
+/*
+Function Prototype:
+void groupCreate(std::string name);
+
+Function Description:
+This function creates a group within the address book. It uses a vector called group names.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->groupCreate("Group Name");
+*/
 void AddressBook::groupCreate(std::string name){
 	for (unsigned int i = 0; i < GroupNames.size(); i++) {
 		if(GroupNames[i] == name){
@@ -180,7 +263,17 @@ void AddressBook::groupCreate(std::string name){
 	std::cout<<"Group "<<name<<" was created."<<std::endl;
 }
 
-// Adds the contacts into the group we created
+/*
+Function Prototype:
+void addContactToGroup(std::string name, std::string group);
+
+Function Description:
+This function adds the contacts into the group we created. It uses a vector called group names.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->addContactToGroup("John Doe", "Group Name");
+*/
 void AddressBook::addContactToGroup(std::string name, std::string group){
 	ContactNode *node = AddressBook::findContact(name);
 	if(node != NULL){
@@ -193,6 +286,17 @@ void AddressBook::addContactToGroup(std::string name, std::string group){
 	}
 }
 
+/*
+Function Prototype:
+void removeGroup(std::string group);
+
+Function Description:
+This function removes a group from a vector called group names. It uses a vector called group names.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->removeGroup("Group Name");
+*/
 void AddressBook::removeGroup(std::string group){
 	bool isReal = false;
 	for(unsigned int i = 0; i < GroupNames.size(); i++){
@@ -216,7 +320,17 @@ void AddressBook::removeGroup(std::string group){
 	}
 }
 
-// Print out the different groups
+/*
+Function Prototype:
+void printGroups();
+
+Function Description:
+This function prints out the different groups. It uses a vector called group names.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->printGroups();
+*/
 void AddressBook::printGroups(){
 	if(GroupNames.empty()){
 		printf("No Groups have been made yet.\n");
@@ -231,7 +345,18 @@ void AddressBook::printGroups(){
 	}
 }
 
-// Add contacts to default group favorites
+/*
+Function Prototype:
+void addFavorite(std::string name);
+
+Function Description:
+This function adds contacts to default group favorites.
+Everything is either in favorite or not in favorite, meaning that it is true or false. Since we are adding it makes it true.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->addFavorite("John Doe");
+*/
 void AddressBook::addFavorite(std::string name){
     ContactNode *node = AddressBook::findContact(name);
 	if(node != NULL){
@@ -250,7 +375,18 @@ void AddressBook::addFavorite(std::string name){
 
 }
 
-// Remove from favorites
+/*
+Function Prototype:
+void removeFavorite(std::string name);
+
+Function Description:
+This function removes contacts from favorites.
+Everything is either in favorite or not in favorite, meaning that it is true or false. Since we are adding it makes it true.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->removeFavorite("John Doe");
+*/
 void AddressBook::removeFavorite(std::string name){
     ContactNode *node = AddressBook::findContact(name);
 	if(node != NULL){
@@ -268,12 +404,34 @@ void AddressBook::removeFavorite(std::string name){
 	}
 }
 
+/*
+Function Prototype:
+void printFavorites();
+
+Function Description:
+This is the public function of printFavorites that calls the private function printFavorites.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->printFavorites();
+*/
 void AddressBook::printFavorites(){
     // Calls the private function printFavorites
     AddressBook::printFavorites(head);
 }
 
-// Private function that prints the favorites
+/*
+Function Prototype:
+void printFavorites(ContactNode *node);
+
+Function Description:
+This is the private function of printFavorites that the public function of printFavorites calls.
+This is the function that actually prints the favorites.
+
+Example:
+AddressBook *FunctionCall = new AddressBook();
+FunctionCall->printFavorites();
+*/
 void AddressBook::printFavorites(ContactNode *node){
     // It will enter this if statement if the head of the list is NULL it means there are no contacts to print out
     if (head == NULL)
