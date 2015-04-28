@@ -58,11 +58,12 @@ int main(int argc, char const *argv[])
         // This tells the computer what to do based on what number the user puts in
 		switch(userInput){
 		    // If the user enters 1
+		    // This calls the function that adds contacts
 			case 1:
 				printf("Enter the name of the contact:\n");
 				std::cin.ignore(100, '\n');
 				std::getline(std::cin, in_name);
-				printf("Enter the phonenumber of the contact:\n");
+				printf("Enter the phone number of the contact:\n");
 				std::getline(std::cin, in_number);
 				in_number2 = stoi(in_number);
 				printf("Enter the Group of the contact:\n");
@@ -71,6 +72,7 @@ int main(int argc, char const *argv[])
 				outFile<<in_name<<","<<in_number<<","<<in_group<<std::endl;
 				break;
             // If the user enters 2
+            // This calls the function that deletes contacts
 			case 2:
 				printf("Enter the name of the contact you want to remove:\n");
 				std::cin.ignore(100, '\n');
@@ -78,6 +80,7 @@ int main(int argc, char const *argv[])
 				FunctionCall->deleteContact(in_name);
 				break;
             // If the user enters 3
+            // This calls the function that finds the contacts
 			case 3:
 				printf("Enter the name of the contact:\n");
 				std::cin.ignore(100, '\n');
@@ -85,11 +88,13 @@ int main(int argc, char const *argv[])
 				FunctionCall->findContact(in_name);
 				break;
             // If the user enter 4
+            // This calls the function that prints contacts
             case 4:
                 // Calls the printContact function
                 FunctionCall->printContacts();
                 break;
             // If the user enters 5
+            // This calls the function that edits the contacts
 			case 5:
 			    printf("Name of Contact You Wish To Change:\n");
 			    // This is for even if you have spaces or periods in the input line you will still get the whole thing
@@ -100,43 +105,61 @@ int main(int argc, char const *argv[])
 			    FunctionCall->editContact(in_name);
 				break;
             // If the user enters 6
+            // This calls the function that creates a group
 			case 6:
 				printf("Enter Name of new Group:\n");
 				std::cin.ignore(100, '\n');
 				std::getline(std::cin, in_group);
 				FunctionCall->groupCreate(in_group);
 				break;
-            // If the user enters 7
+             // If the user enters 7
+            // This calls the function that adds a contact to a group
 			case 7:
+				printf("Enter Name of new Group:\n");
+				std::cin.ignore(100, '\n');
+				std::getline(std::cin, in_group);
+				printf("Enter the name of the contact:\n");
+				std::cin.ignore(100, '\n');
+				std::getline(std::cin, in_name);
+				FunctionCall->addContactToGroup(in_name, in_group);
+				break;
+            // If the user enters 8
+            // This calls the function that removes groups
+			case 8:
 				printf("Enter Name of new Group:\n");
 				std::cin.ignore(100, '\n');
 				std::getline(std::cin, in_group);
 				FunctionCall->removeGroup(in_group);
 				break;
-			// If the user enters 8
-			case 8:
+			// If the user enters 9
+			// This calls the function that prints the groups
+			case 9:
 				FunctionCall->printGroups();
 				break;
-            // If the user enters 9
-            case 9:
+            // If the user enters 10
+            // This calls the function that adds favorites
+            case 10:
 				printf("Enter the name of the contact:\n");
 				std::cin.ignore(100, '\n');
 				std::getline(std::cin, in_name);
 				FunctionCall->addFavorite(in_name);
 				break;
-            // If the user enters 10
-            case 10:
+            // If the user enters 11
+            // This calls the function that removes favorites
+            case 11:
 				printf("Enter the name of the contact:\n");
 				std::cin.ignore(100, '\n');
 				std::getline(std::cin, in_name);
 				FunctionCall->removeFavorite(in_name);
 				break;
-            // If the user enters 11
-            case 11:
+            // If the user enters 12
+            // This calls the function that prints the favorites
+            case 12:
 				FunctionCall->printFavorites();
 				break;
-            // If the user enters 12
-			case 12:
+            // If the user enters 13
+            // This quits the program
+			case 13:
 				whileLoop = false;
 				break;
             // If the user enters anything else
