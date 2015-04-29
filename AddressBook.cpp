@@ -183,8 +183,27 @@ void AddressBook::groupCreate(std::string name){
 // Adds the contacts into the group we created
 void AddressBook::addContactToGroup(std::string name, std::string group){
 	ContactNode *node = AddressBook::findContact(name);
-	if(node != NULL){
+	if(node != NULL)
+    {
 		node->Group = group;
+
+		// Added this which adds the group to the GroupNames vector if it isn't already
+        bool GroupExists = false;
+        for(int i = 0; i < GroupNames.size(); i++)
+        {
+            if(GroupNames[i] == group)
+            {
+                GroupExists = true;
+
+            }
+
+
+        }
+        if(GroupExists == false)
+        {
+            GroupNames.push_back(group);
+
+        }
 	}
 	else{
 		node->Group = " ";
@@ -263,7 +282,7 @@ void AddressBook::removeFavorite(std::string name){
         }
     }
     else{
-		node->Favorite = false;
+		node->Favorite = false;/////////
 		std::cout<<name<<" could not be found"<<std::endl;
 	}
 }
@@ -279,6 +298,7 @@ void AddressBook::printFavorites(ContactNode *node){
     if (head == NULL)
     {
         std::cout << "There are no contacts to print." << std::endl;
+        return;
     }
     // If the head does not equal NULL it will enter this else statement and print out the contact info of the favorite
     else if(node->Favorite == true)
@@ -291,5 +311,18 @@ void AddressBook::printFavorites(ContactNode *node){
         if(node->next != NULL){
 			AddressBook::printFavorites(node->next);
 		}
+    }
+
+    // Added this since the code originally stopped if you got to something that
+    // wasn't a favorite, instead of calling it for whats next
+    else
+    {
+
+
+        if(node->next != NULL){
+			AddressBook::printFavorites(node->next);
+		}
+
+
     }
 }
