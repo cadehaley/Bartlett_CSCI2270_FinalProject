@@ -46,12 +46,13 @@ int main(int argc, char const *argv[])
 		printf("4. Print Contacts\n");
 		printf("5. Edit Contact\n");
 		printf("6. Create New Group\n");
-		printf("7. Remove Group\n");
-		printf("8. Print Groups\n");
-		printf("9. Add Favorite\n");
-		printf("10. Remove Favorite\n");
-        printf("11. Print Favorites\n");
-		printf("12. Quit\n");
+		printf("7. Add Contact to Group\n");
+		printf("8. Remove Group\n");
+		printf("9. Print Groups\n");
+		printf("10. Add Favorite\n");
+		printf("11. Remove Favorite\n");
+        printf("12. Print Favorites\n");
+		printf("13. Quit\n");
         // This takes in what number the user inputed
 		std::cin>>userInput;
 
