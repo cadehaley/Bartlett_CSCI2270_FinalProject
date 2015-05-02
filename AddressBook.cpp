@@ -45,7 +45,8 @@ void AddressBook::addContact(std::string name, int phone, std::string group){
 		node->previous = NULL;
 		head = node;
 		tail = node;
-		AddressBook::addContactToGroup(name, group);
+		//AddressBook::addContactToGroup(name, group);
+		node->Group = group;
 	}
 
 	else
@@ -295,7 +296,7 @@ void AddressBook::addContactToGroup(std::string name, std::string group){
         if(GroupExists == false)
         {
             GroupNames.push_back(group);
-
+            printf("...Adding group\n");
         }
 	}
 	else{

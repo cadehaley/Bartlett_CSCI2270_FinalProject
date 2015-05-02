@@ -34,10 +34,12 @@ int main(int argc, char const *argv[])
 	}
 	inFile.close();
 	std::ofstream outFile("Added_Contacts.txt", std::ios_base::app | std::ios_base::out);
+	std::stringstream one(in_number);
 	while(whileLoop == true)
 	{
         // This initializes the integer that the user is going to input to select a menu option
 		int userInput = 0;
+		int numberized_input;
 		// This prints the menu that opens first
 		printf("===Address Book===\n");
 		printf("1. Add Contact\n");
@@ -66,7 +68,15 @@ int main(int argc, char const *argv[])
 				std::getline(std::cin, in_name);
 				printf("Enter the phone number of the contact:\n");
 				std::getline(std::cin, in_number);
-				in_number2 = stoi(in_number);
+
+				one.str( std::string() );
+				one.clear();
+				one << in_number;
+                if (!(one >> numberized_input)){ // Using string-to-int stringstream method
+                printf("Number invalid. Digits only please\n");
+                numberized_input = 999;
+                }
+                in_number2 = numberized_input;
 				printf("Enter the Group of the contact:\n");
 				std::getline(std::cin, in_group);
 				FunctionCall->addContact(in_name,in_number2,in_group);
